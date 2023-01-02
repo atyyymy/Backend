@@ -1,7 +1,7 @@
 package com.example.backend.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @ClassName HelloController
@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Date 2022/12/29 11:08
  * @Version 1.0
  */
-@Controller
-@RequestMapping("/hello")
+
+@RestController
 public class HelloController {
-    @RequestMapping("/helloworld")
-    public String HelloWorld(){
-        return "Hello World";
+    @GetMapping("/hello")
+    public String hello() {
+        return "hello";
     }
 }
+
+

@@ -1,0 +1,27 @@
+spring:
+  profiles:
+    active: dev-wei
+
+#server:
+#  port: 8081
+#spring:
+#  datasource:
+#    name: test  #数据库名
+#    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
+#    username: root
+#    password: 123456
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#jwt:
+#  # jwt 存储请求头
+#  tokenHeader: Authoriztion
+#  # Jwt 加解密使用的密匙
+#  secret: medicine-secret
+#  # jwt的超期限时间（60*60*24）
+#  expiration: 604800
+#  # Jwt 负载中拿到开头
+#  tokenHead: Bearer
+#  jpa:
+#    hibernate:
+#    ddl-auto: update
+#    show-sql: true
