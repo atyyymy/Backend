@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.backend.mapper.homeworkManagement.HomeworkTableMapper">
+    <resultMap id="BaseResultMap" type="com.example.backend.dao.homeworkManagement.HomeworkTable">
+        <id property="id" column="ID" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="beginTime" column="begin_time" jdbcType="TIMESTAMP"/>
+        <result property="endTime" column="end_time" jdbcType="TIMESTAMP"/>
+        <result property="questionTotal" column="question_total" jdbcType="INTEGER"/>
+        <result property="scoreTotal" column="score_total" jdbcType="INTEGER"/>
+        <result property="score" column="score" jdbcType="INTEGER"/>
+        <result property="teacherId" column="teacher_id" jdbcType="INTEGER"/>
+        <result property="studentId" column="student_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,name,status,begin_time,end_time,
+        question_total,score_total,score,teacher_id,student_id
+    </sql>
+    <select id="getAllStuHomework"
+            parameterType="java.lang.Integer"
+            resultType="com.example.backend.dao.homeworkManagement.StudentHomeworkAll">
+        select hk.*
+        from homework_table as hk
+        where  hk.student_id = #{stuID}
+        order by hk.ID desc
+    </select>
+
+<!--    <select id="getAllInviExam" resultType="com.example.backend.dao.ExamMetaTable">-->
+<!--        select em.*-->
+<!--        from exam_meta_table as em, exam_teacher_table as et-->
+<!--        where em.ID = et.exam_id and et.teacher_id = #{teaID} and em.status != '已结束'-->
+<!--    </select>-->
+
+<!--    <select id="getAllPubExam" resultType="com.example.backend.dao.ExamMetaTable">-->
+<!--        select em.*-->
+<!--        from exam_meta_table as em, paper_meta_table as pm-->
+<!--        where em.paper_id = pm.ID and pm.teacher_id = #{teaID} and pm.status != '未发布'-->
+<!--    </select>-->
+<!--    <select id="getAllReadExam" resultType="com.example.backend.dao.ExamMetaTable">-->
+<!--        select em.*-->
+<!--        from exam_meta_table as em, read_teacher_table as rt, paper_meta_table as pm-->
+<!--        where em.ID = rt.exam_id and rt.teacher_id = #{teaID}-->
+<!--          and em.paper_id = pm.ID and pm.status = '批阅中'-->
+<!--    </select>-->
+    <select id="getHomeworkNameByID" resultType="java.lang.String">
+        select hk.name
+        from homework_table as hk
+        where hk.ID = #{homeworkID}
+    </select>
+    <select id="getStuHomework" resultType="com.example.backend.dao.homeworkManagement.StudentHomeworkAll">
+        select hk.*
+        from homework_table as hk
+        where hk.ID=#{homeworkID} and hk.student_id=#{stuID}
+    </select>
+</mapper>
